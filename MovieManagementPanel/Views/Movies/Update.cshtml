@@ -1,16 +1,20 @@
 ﻿@model Domain.DTOs.MovieUpdateDto
 
-<form action="Update" method="post">
-    <input hidden asp-for="Id" class="form-control" />
-    <div class="form-floating mb-3">
-        <input asp-for="Name" class="form-control" id="name" type="text" placeholder="Movie Name" />
-        <label for="name">Movie Name</label>
-    </div>
-    <div class="form-floating mb-3">
-        <input asp-for="YearOfConstruction" class="form-control" id="yearOfConstruction" type="number" placeholder="YearOfConstruction" />
-        <label for="yearOfConstruction">Year of Construction</label>
-    </div>
-    <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-        <button class="btn btn-primary">Update</button>
-    </div>
-</form>
+<div class="d-flex align-items-center mt-5" id="layoutSidenav_content">
+    <main>
+        <form action="Update" method="post">
+            <input hidden asp-for="Id" class="form-control" />
+            <div class="form-floating mb-3">
+                <input asp-for="Name" class="form-control" id="name" type="text" placeholder="MovieName" />
+                <label for="name">Movie Name</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="YearOfConstruction" class="form-control" id="yearOfConstruction" type="number" placeholder="YearOfConstruction" />
+                <label for="yearOfConstruction">YearOfConstruction</label>
+            </div>
+            <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
+                <button class="btn btn-primary">Update</button>
+            </div>
+        </form>
+    </main>
+</div>

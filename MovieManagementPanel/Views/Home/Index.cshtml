@@ -3,16 +3,18 @@
 <div id="layoutSidenav_content">
     <main>
         <div class="container-fluid px-4">
-            <h1 class="mt-4">Tables</h1>
+            <h1 class="mt-4">Movie List</h1>
             <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                <li class="breadcrumb-item active">Tables</li>
+                <!--<li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>-->
+                <!--<li class="breadcrumb-item active">Movie List</li>-->
             </ol>
             <div class="card mb-4">
-                <div class="card-body">
-                    DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the
-                    <a target="_blank" href="https://datatables.net/">official DataTables documentation</a>
-                    .
+                <div class="card-body bg-primary">
+                    <p>
+                        <strong>Welcome to Movie Manager Panel!</strong> <br />
+                        With this panel, you can search by years, by movie, and by the theater where it was screened. <br />
+                        Have Fun Visitors!
+                    </p>
                 </div>
             </div>
             <div class="card mb-4">
@@ -24,25 +26,26 @@
                     <div class="row">
                         <div class="col-md-4">
                             <form action="GetAllByYearOfConstruction">
-                                <input name="firstYear" class="form-control" type="number" placeholder="İlk Tarih" />
-                                <input name="secondYear" class="form-control" type="number" placeholder="İkinci Tarih" />
-                                <input class="btn btn-primary" type="submit" value="Search" />
+                                <input name="firstYear" class="form-control" type="number" placeholder="First Date" />
+                                <input name="secondYear" class="form-control mt-1" type="number" placeholder="Second Date" />
+                                <input class="btn btn-primary mt-1" type="submit" value="Search" />
                             </form>
                         </div>
                         <div class="col-md-4">
                             <form action="GetByName">
-                                <input name="name" class="form-control" type="text" placeholder="Film Adı" />
-                                <input class="btn btn-primary" type="submit" value="Search" />
+                                <input name="name" class="form-control" type="text" placeholder="Movie Name" />
+                                <input class="btn btn-primary mt-1" type="submit" value="Search" />
                             </form>
                         </div>
                         <div class="col-md-4">
                             <form action="GetAllBySaloonName">
-                                <input name="name" class="form-control" type="text" placeholder="Salon Adı" />
-                                <input class="btn btn-primary" type="submit" value="Search" />
+                                <input name="name" class="form-control" type="text" placeholder="Saloon Name" />
+                                <input class="btn btn-primary mt-1" type="submit" value="Search" />
                             </form>
                         </div>
                     </div>
-                    <table class="table">
+                    <hr />
+                    <table class="table mt-1">
                         <thead>
                             <tr>
                                 <th>Name</th>
@@ -67,12 +70,12 @@
                                                 <td>@saloon.ProjectionYear</td>
                                                 <td>
                                                     <form method="post" action="/Movies/Delete/@movie.Id">
-                                                        <button class="btn btn-primary">Sil</button>
+                                                        <button class="btn btn-primary">Delete</button>
                                                     </form>
                                                 </td>
                                                 <td>
                                                     <form method="get" action="/Movies/Update/@movie.Id">
-                                                        <button class="btn btn-primary">Güncelle</button>
+                                                        <button class="btn btn-primary">Update</button>
                                                     </form>
                                                 </td>
                                             </tr>
