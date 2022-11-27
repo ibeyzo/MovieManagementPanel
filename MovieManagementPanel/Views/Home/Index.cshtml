@@ -1,0 +1,110 @@
+﻿@model IEnumerable<Domain.Entities.Movie>
+
+<div id="layoutSidenav_content">
+    <main>
+        <div class="container-fluid px-4">
+            <h1 class="mt-4">Tables</h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                <li class="breadcrumb-item active">Tables</li>
+            </ol>
+            <div class="card mb-4">
+                <div class="card-body">
+                    DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the
+                    <a target="_blank" href="https://datatables.net/">official DataTables documentation</a>
+                    .
+                </div>
+            </div>
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-table me-1"></i>
+                    Movies
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <form action="GetAllByYearOfConstruction">
+                                <input name="firstYear" class="form-control" type="number" placeholder="İlk Tarih" />
+                                <input name="secondYear" class="form-control" type="number" placeholder="İkinci Tarih" />
+                                <input class="btn btn-primary" type="submit" value="Search" />
+                            </form>
+                        </div>
+                        <div class="col-md-4">
+                            <form action="GetByName">
+                                <input name="name" class="form-control" type="text" placeholder="Film Adı" />
+                                <input class="btn btn-primary" type="submit" value="Search" />
+                            </form>
+                        </div>
+                        <div class="col-md-4">
+                            <form action="GetAllBySaloonName">
+                                <input name="name" class="form-control" type="text" placeholder="Salon Adı" />
+                                <input class="btn btn-primary" type="submit" value="Search" />
+                            </form>
+                        </div>
+                    </div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>YearOfConstruction</th>
+                                <th>Saloon</th>
+                                <th>ProjectionYear</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                foreach (var movie in Model)
+                                {
+                                    if (movie.Projections.Any())
+                                    {
+                                        foreach (var saloon in movie.Projections)
+                                        {
+                                            <tr>
+                                                <td>@movie.Name</td>
+                                                <td>@movie.YearOfConstruction</td>
+                                                <td>@saloon.Saloon.Name</td>
+                                                <td>@saloon.ProjectionYear</td>
+                                                <td>
+                                                    <form method="post" action="/Movies/Delete/@movie.Id">
+                                                        <button class="btn btn-primary">Sil</button>
+                                                    </form>
+                                                </td>
+                                                <td>
+                                                    <form method="get" action="/Movies/Update/@movie.Id">
+                                                        <button class="btn btn-primary">Güncelle</button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <tr>
+                                            <td>@movie.Name</td>
+                                            <td>@movie.YearOfConstruction</td>
+                                            <td>YOK</td>
+                                            <td>YOK</td>
+                                            <td>
+                                                <form method="post" action="/Movies/Delete/@movie.Id">
+                                                    <button class="btn btn-primary">Delete</button>
+                                                </form>
+                                            </td>
+                                            <td>
+                                                <form method="get" action="/Movies/Update/@movie.Id">
+                                                    <button class="btn btn-primary">Update</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    }
+
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</div>

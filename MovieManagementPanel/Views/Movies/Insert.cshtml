@@ -1,0 +1,19 @@
+﻿@model Domain.DTOs.MovieCreateDto
+
+<div id="layoutSidenav_content">
+    <main>
+        <form asp-action="Insert">
+            <div class="form-floating mb-3">
+                <input asp-for="Name" class="form-control" id="name" type="text" placeholder="Movie Name" />
+                <label for="name">Movie Name</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="YearOfConstruction" class="form-control" id="yearOfConstruction" type="number" placeholder="yearOfConstruction" />
+                <label for="yearOfConstruction">Year of Construction</label>
+            </div>
+            <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
+                <button class="btn btn-primary">Create</button>
+            </div>
+        </form>
+    </main>
+</div>
